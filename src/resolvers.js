@@ -10,7 +10,7 @@ const resolvers = {
     topTrendingMovies: (_, { time_window, limit }, { dataSources }) => {
       return dataSources.moviesAPI.getTopTrendingMovies(time_window, limit);
     },
-    topTrendingTVShows: (_, { time_window, limit }, { dataSources }) => {
+    trendingTVShows: (_, { time_window, limit }, { dataSources }) => {
       return dataSources.moviesAPI.getTopTrendingTVShows(time_window, limit);
     },
     /* movieGenres: (_, { media_type }, { dataSources }) => {

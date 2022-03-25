@@ -10,8 +10,8 @@ const typeDefs = gql`
     Movie(id: ID!): Movie!
     topTrendingMovies(time_window: String!, limit: Int!): [Movie!]!
 
-    TVShow(id: ID!): Movie!
-    topTrendingTVShows(time_window: String!, limit: Int!): [TVShow!]!
+    TVShow(id: ID!): TVShow!
+    trendingTVShows(time_window: String!, limit: Int!): [TVShow!]!
 
     mediaConfig: MediaConfig
   }
