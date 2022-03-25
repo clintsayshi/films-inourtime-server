@@ -28,6 +28,7 @@ const resolvers = {
       return dataSources.moviesAPI.getMovieProductionCompanies(id);
     },
   },
+
   TVShow: {
     genres: ({ id }, _, { dataSources }) => {
       return dataSources.moviesAPI.getTVGenres(id);
