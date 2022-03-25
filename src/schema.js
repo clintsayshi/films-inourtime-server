@@ -54,12 +54,19 @@ const typeDefs = gql`
     original_language: String
     name: String!
     overview: String
+    tagline: String
+    seasons: [Season]
+    number_of_episodes: Int
+    number_of_seasons: Int
+    episode_runtime: [Int]
     backdrop_path: String
     poster_path: String
     first_air_date: String
-    genre_ids: [TVGenre]
+    genres: [TVGenre]
+    networks: [Network]
+    production_companies: [ProductionCompany]
     vote_count: Int
-    vote_average: Int
+    vote_average: Float
     popularity: Float
   }
 
@@ -79,6 +86,23 @@ const typeDefs = gql`
   type TVGenre {
     id: ID!
     name: String!
+  }
+
+  type Network {
+    id: ID!
+    name: String!
+    logo_path: String
+    origin_country: String
+  }
+
+  type Season {
+    id: ID!
+    air_date: String
+    episode_count: Int
+    name: String
+    overview: String
+    poster_path: String
+    season_number: Int
   }
 `;
 

@@ -54,6 +54,26 @@ class MoviesAPI extends RESTDataSource {
     return data;
   }
 
+  async getTVGenres(id) {
+    const data = await this.get(`tv/${id}`);
+    return data.genres;
+  }
+
+  async getTVNetworks(id) {
+    const data = await this.get(`tv/${id}`);
+    return data.networks;
+  }
+
+  async getTVSeasons(id) {
+    const data = await this.get(`tv/${id}`);
+    return data.seasons;
+  }
+
+  async getTVProductionCompanies(id) {
+    const movie = await this.get(`tv/${id}`);
+    return movie.production_companies;
+  }
+
   async getGenreList(media_type) {
     return this.get(`/genre/${media_type}/list`);
   }

@@ -28,6 +28,20 @@ const resolvers = {
       return dataSources.moviesAPI.getMovieProductionCompanies(id);
     },
   },
+  TVShow: {
+    genres: ({ id }, _, { dataSources }) => {
+      return dataSources.moviesAPI.getTVGenres(id);
+    },
+    production_companies: ({ id }, _, { dataSources }) => {
+      return dataSources.moviesAPI.getTVProductionCompanies(id);
+    },
+    networks: ({ id }, _, { dataSources }) => {
+      return dataSources.moviesAPI.getTVNetworks(id);
+    },
+    seasons: ({ id }, _, { dataSources }) => {
+      return dataSources.moviesAPI.getTVSeasons(id);
+    },
+  },
 };
 
 module.exports = resolvers;
