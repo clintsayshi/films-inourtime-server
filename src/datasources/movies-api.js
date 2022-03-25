@@ -85,7 +85,18 @@ class MoviesAPI extends RESTDataSource {
 
   async getTopTrendingTVShows(time_window, limit) {
     const data = await this.get(`trending/tv/${time_window}`);
-    return data.results.slice(0, limit);
+    function compare_rating(a, b) {
+      if (a.vote_average > b.vote_average) {
+        return -1;
+      }
+      if (a.vote_average < b.vote_average) {
+        return 1;
+      }
+      return 0;
+    }
+    const temp = data.results.sort(compare_rating);
+
+    return temp.slice(0, limit);
   }
   /* async getTopTrendingTVShowsByGenre(time_window, genre_id, limit)  {
     const data = await this.get(`discover/tv/${time_window}`,{
