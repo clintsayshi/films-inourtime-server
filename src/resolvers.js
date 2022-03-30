@@ -7,15 +7,21 @@ const resolvers = {
     TVShow: (_, { id }, { dataSources }) => {
       return dataSources.moviesAPI.getTVShow(id);
     },
-    topTrendingMovies: (_, { time_window, limit }, { dataSources }) => {
-      return dataSources.moviesAPI.getTopTrendingMovies(time_window, limit);
+    trendingMovies: (_, { time_window, limit }, { dataSources }) => {
+      return dataSources.moviesAPI.getTrendingMovies(time_window, limit);
     },
     trendingTVShows: (_, { time_window, limit }, { dataSources }) => {
-      return dataSources.moviesAPI.getTopTrendingTVShows(time_window, limit);
+      return dataSources.moviesAPI.getTrendingTVShows(time_window, limit);
     },
-    /* movieGenres: (_, { media_type }, { dataSources }) => {
-      return dataSources.moviesAPI.getGenreList(media_type);
-    }, */
+    moviesByGenre: (_, { genreId, year }, { dataSources }) => {
+      return dataSources.moviesAPI.getMoviesByGenre(genreId, year);
+    },
+    tvByGenre: (_, { genreId, year }, { dataSources }) => {
+      return dataSources.moviesAPI.getTVByGenre(genreId, year);
+    },
+    listOfGenres: (_, { mediaType }, { dataSources }) => {
+      return dataSources.moviesAPI.getListOfGenres(mediaType);
+    },
     mediaConfig: (_, __, { dataSources }) => {
       return dataSources.moviesAPI.getMediaConfig();
     },

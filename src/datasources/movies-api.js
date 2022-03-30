@@ -15,8 +15,13 @@ class MoviesAPI extends RESTDataSource {
     const data = await this.get(`configuration`);
     return data.images;
   }
+
+  /**
+  THE MOVIES SECTION
+  **/
+
   // Get trending movies
-  async getTopTrendingMovies(time_window, limit) {
+  async getTrendingMovies(time_window, limit) {
     const data = await this.get(`trending/movie/${time_window}`);
 
     function compare_rating(a, b) {
@@ -32,22 +37,39 @@ class MoviesAPI extends RESTDataSource {
 
     return temp.slice(0, limit);
   }
-  // Get a specific movie
+  // Get a movie by ID
   async getMovie(id) {
     const data = await this.get(`movie/${id}`);
     //console.log(data);
     return data;
   }
-  // Get detailed genres of a specific movie
-  async getMovieGenres(id) {
-    const movie = await this.get(`movie/${id}`);
-    return movie.genres;
+  // Get Movies by genre and year
+  async getMoviesByGenre(genreId, year) {
+    const data = await this.get(`discover/movie`, {
+      with_genres: genreId,
+      primary_release_year: year,
+    });
+    return data.results;
   }
-
+  // Get Movie Genres
+  async getMovieGenres(id) {
+    const data = await this.get(`movie/${id}`);
+    //console.log(data);
+    return data.genres;
+  }
+  // Get an array of a movie's production companies
   async getMovieProductionCompanies(id) {
     const movie = await this.get(`movie/${id}`);
     return movie.production_companies;
   }
+
+  async getListOfGenres(mediaType) {
+    const data = await this.get(`/genre/${mediaType}/list`);
+    return data.genres;
+  }
+  /**
+  TV SHOWS SECTION
+  **/
 
   async getTVShow(id) {
     const data = await this.get(`tv/${id}`);
@@ -73,17 +95,8 @@ class MoviesAPI extends RESTDataSource {
     const movie = await this.get(`tv/${id}`);
     return movie.production_companies;
   }
-
-  async getGenreList(media_type) {
-    return this.get(`/genre/${media_type}/list`);
-  }
-
-  /* async getTopTrendingMoviesByGenre(time_window, genre_id, limit) {
-    const data = await this.get(`trending/movie/${time_window}`);
-    return data.results.slice(0, limit);
-  } */
-
-  async getTopTrendingTVShows(time_window, limit) {
+  // Get trending TV shows from the datasource
+  async getTrendingTVShows(time_window, limit) {
     const data = await this.get(`trending/tv/${time_window}`);
     function compare_rating(a, b) {
       if (a.vote_average > b.vote_average) {
@@ -98,16 +111,14 @@ class MoviesAPI extends RESTDataSource {
 
     return temp.slice(0, limit);
   }
-  /* async getTopTrendingTVShowsByGenre(time_window, genre_id, limit)  {
-    const data = await this.get(`discover/tv/${time_window}`,{
-      language: 'en-us',
-      sort_by:'primary_release_data.asc',
-      incude_adult: 'true',
-      include_video: 'true',
-      with_genres: genre_id
+  // Get TV Shows by genre and year
+  async getTVByGenre(genreId, year) {
+    const data = await this.get(`discover/tv`, {
+      with_genres: genreId,
+      primary_release_year: year,
     });
-    return data.results.slice(0, limit);
-  } */
+    return data.results;
+  }
 }
 
 module.exports = MoviesAPI;
