@@ -28,6 +28,7 @@ module.exports = gql`
     episode_runtime: [Int]
     backdrop_path: String
     poster_path: String
+    videos: [Video!]
     first_air_date: String
     genres: [Genre]
     networks: [Network]
