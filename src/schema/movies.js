@@ -8,6 +8,8 @@ module.exports = gql`
     trendingMovies(time_window: String!, limit: Int!): [Movie!]!
     "Get movies by genre and year"
     moviesByGenre(genreId: ID!, year: Int!): [Movie!]
+    "Get movie videos by ID"
+    videos(id: ID!): [Video!]
 
     "Get a list of genres"
     listOfGenres(mediaType: String!): [Genre!]
@@ -25,6 +27,7 @@ module.exports = gql`
     adult: Boolean
     backdrop_path: String
     poster_path: String
+    videos: [Video]
     genres: [Genre]
     vote_count: Int
     vote_average: Float
@@ -35,6 +38,16 @@ module.exports = gql`
     status: String
     title: String
     popularity: Float
+  }
+
+  type Video {
+    id: ID!
+    name: String
+    key: String
+    site: String
+    type: String
+    official: Boolean
+    size: Int
   }
 
   type Genre {
