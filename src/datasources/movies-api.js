@@ -16,6 +16,11 @@ class MoviesAPI extends RESTDataSource {
     return data.images;
   }
 
+  async getVideos(id, mediaType) {
+    const data = await this.get(`${mediaType}/${id}/videos`);
+    return data.results;
+  }
+
   /**
   THE MOVIES SECTION
   **/

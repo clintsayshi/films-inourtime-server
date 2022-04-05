@@ -33,8 +33,10 @@ const resolvers = {
     production_companies: ({ id }, _, { dataSources }) => {
       return dataSources.moviesAPI.getMovieProductionCompanies(id);
     },
+    videos: ({ id }, _, { dataSources }) => {
+      return dataSources.moviesAPI.getVideos(id, "movie");
+    },
   },
-
   TVShow: {
     genres: ({ id }, _, { dataSources }) => {
       return dataSources.moviesAPI.getTVGenres(id);
@@ -47,6 +49,9 @@ const resolvers = {
     },
     seasons: ({ id }, _, { dataSources }) => {
       return dataSources.moviesAPI.getTVSeasons(id);
+    },
+    videos: ({ id }, _, { dataSources }) => {
+      return dataSources.moviesAPI.getVideos(id, "tv");
     },
   },
 };
