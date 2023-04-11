@@ -7,8 +7,9 @@ class MoviesAPI extends RESTDataSource {
     this.baseURL = "https://api.themoviedb.org/3/"; // Set the base URL for the REST API
   }
 
-  willSendRequest(request) {
+  override willSendRequest(request) {
     request.params.append("api_key", "c76aa915e65a390c6b8536e7cd456131");
+    request.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNzZhYTkxNWU2NWEzOTBjNmI4NTM2ZTdjZDQ1NjEzMSIsInN1YiI6IjYyMzI1ODM4MzkxYjljMDA3NWY1NmE3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wnpyWL5rTq6qMV-sfGqzhBC68rOJZNuBCsRLTQJAvBE';
   }
 
   async getMediaConfig() {
