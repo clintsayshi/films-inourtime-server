@@ -13,8 +13,12 @@
   "dependencies": {
     "apollo-datasource-rest": "^3.5.1",
     "apollo-server": "^3.6.4",
+    "dotenv": "^16.3.1",
     "graphql": "^16.3.0",
+    "netlify-cli": "^15.7.0",
+    "netlify-lambda": "^2.0.16",
     "node-fetch": "^3.2.3",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "serverless-http": "^3.2.0"
   }
 }
