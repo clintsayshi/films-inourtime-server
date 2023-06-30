@@ -2,6 +2,7 @@ const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
 const MoviesAPI = require("./datasources/movies-api");
+const serverless = require("serverless-http");
 
 // Create an instance of the ApolloServer
 // Requires two parameters: schema definition and resolvers
